@@ -16,3 +16,16 @@ This project is a modern, responsive tribute website dedicated to Marie Curie, o
 
 Feel free to explore, learn, and be inspired by the remarkable journey of Marie Curie!
 
+## Job Board Project
+
+This project is a modern, responsive job board web application designed to connect job seekers with employers efficiently. It features a clean user interface, intuitive navigation, and dynamic job listings, making it easy for users to browse, search, and apply for jobs.
+
+**Key Features:**
+- Responsive design for seamless use on all devices  
+- Dynamic job listings with search and filter functionality  
+- User-friendly interface for both job seekers and employers  
+- Secure authentication and user account management  
+- Job posting and application tracking features  
+- Clean, modern design with accessible navigation  
+- Built with scalable and maintainable web technologies
+
