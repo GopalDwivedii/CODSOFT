@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobBoard - Find Your Dream Job</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Montserrat and Oswald -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <h2>JobBoard</h2>
+                </div>
+                <nav class="header__nav" id="nav">
+                    <a href="#" data-page="home">Home</a>
+                    <a href="#" data-page="jobs">Jobs</a>
+                    <a href="#" data-page="companies">Companies</a>
+                    <a href="#" data-page="about">About</a>
+                </nav>
+                <div class="header__auth">
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="btn btn--outline btn--sm" data-action="login">Login</button>
+                        <button class="btn btn--primary btn--sm" data-action="register">Sign Up</button>
+                    </div>
+                    <div class="user-menu hidden" id="userMenu">
+                        <span class="user-name" id="userName"></span>
+                        <button class="btn btn--outline btn--sm" data-action="dashboard">Dashboard</button>
+                        <button class="btn btn--secondary btn--sm" data-action="logout">Logout</button>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" id="mainContent">
+        <!-- Home Page -->
+        <section class="page active" id="homePage">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Find Your Dream Job Today</h1>
+                        <p class="hero__subtitle">Discover thousands of job opportunities from top companies worldwide</p>
+                        <div class="hero__search">
+                            <div class="search-bar">
+                                <input type="text" placeholder="Job title, keywords, or company" class="search-input" id="heroSearch">
+                                <input type="text" placeholder="Location" class="search-input" id="heroLocation">
+                                <button class="btn btn--primary search-btn" id="heroSearchBtn">Search Jobs</button>
+                            </div>
+                        </div>
+                        <div class="hero__stats">
+                            <div class="stat">
+                                <h3 id="totalJobs">0</h3>
+                                <p>Active Jobs</p>
+                            </div>
+                            <div class="stat">
+                                <h3 id="totalCompanies">0</h3>
+                                <p>Companies</p>
+                            </div>
+                            <div class="stat">
+                                <h3 id="totalCandidates">0</h3>
+                                <p>Job Seekers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Jobs -->
+            <section class="featured-jobs">
+                <div class="container">
+                    <h2 class="section-title">Featured Jobs</h2>
+                    <div class="jobs-grid" id="featuredJobs">
+                        <!-- Featured jobs will be populated here -->
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn--outline" data-page="jobs">View All Jobs</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Jobs Listing Page -->
+        <section class="page" id="jobsPage">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Job Listings</h1>
+                    <p>Find your perfect job from our extensive database</p>
+                </div>
+                
+                <!-- Search and Filters -->
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search jobs..." class="search-input" id="jobSearch">
+                        <button class="btn btn--primary" id="searchButton">Search</button>
+                    </div>
+                    <div class="filters">
+                        <select class="form-control" id="typeFilter">
+                            <option value="">All Job Types</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Freelance">Freelance</option>
+                        </select>
+                        <select class="form-control" id="locationFilter">
+                            <option value="">All Locations</option>
+                            <option value="San Francisco, CA">San Francisco, CA</option>
+                            <option value="New York, NY">New York, NY</option>
+                            <option value="Austin, TX">Austin, TX</option>
+                            <option value="Seattle, WA">Seattle, WA</option>
+                        </select>
+                        <select class="form-control" id="sortFilter">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="salary-high">Salary: High to Low</option>
+                            <option value="salary-low">Salary: Low to High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Jobs Results -->
+                <div class="jobs-results">
+                    <div class="results-header">
+                        <span id="resultsCount">0 jobs found</span>
+                    </div>
+                    <div class="jobs-list" id="jobsList">
+                        <!-- Jobs will be populated here -->
+                    </div>
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Detail Page -->
+        <section class="page" id="jobDetailPage">
+            <div class="container">
+                <div class="job-detail" id="jobDetailContent">
+                    <!-- Job detail content will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section class="page" id="dashboardPage">
+            <div class="container">
+                <div class="dashboard">
+                    <div class="dashboard-header">
+                        <h1 id="dashboardTitle">Dashboard</h1>
+                    </div>
+                    <div class="dashboard-content" id="dashboardContent">
+                        <!-- Dashboard content will be populated based on user role -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Companies Page -->
+        <section class="page" id="companiesPage">
+            <div class="container">
+                <h1>Companies</h1>
+                <div class="companies-grid" id="companiesGrid">
+                    <!-- Companies will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section class="page" id="aboutPage">
+            <div class="container">
+                <h1>About JobBoard</h1>
+                <p>JobBoard is your premier destination for finding the perfect job opportunity. We connect talented professionals with leading companies across various industries.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay" data-action="closeModal"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button class="modal-close" data-action="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" data-action="showRegister">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-overlay" data-action="closeModal"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sign Up</h3>
+                <button class="modal-close" data-action="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="role-selector">
+                    <button class="btn btn--outline role-btn active" data-role="candidate">Job Seeker</button>
+                    <button class="btn btn--outline role-btn" data-role="employer">Employer</button>
+                </div>
+                <form id="registerForm">
+                    <div class="candidate-fields">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" name="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" name="lastName">
+                        </div>
+                    </div>
+                    <div class="employer-fields hidden">
+                        <div class="form-group">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" class="form-control" name="companyName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Sign Up</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Already have an account? <a href="#" data-action="showLogin">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Application Modal -->
+    <div class="modal" id="applicationModal">
+        <div class="modal-overlay" data-action="closeModal"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Apply for Job</h3>
+                <button class="modal-close" data-action="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Resume (PDF)</label>
+                        <input type="file" class="form-control" name="resume" accept=".pdf">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Cover Letter</label>
+                        <textarea class="form-control" name="coverLetter" rows="4" placeholder="Tell us why you're perfect for this role..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner hidden" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
